@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   ForbiddenException,
+  Delete,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
@@ -61,5 +62,14 @@ export class UsersController {
     } else {
       return this.usersService.updateUser(updateUserDto, id);
     }
+  }
+
+  @Delete(':id')
+  @Role(UserRole.ADMIN)
+  async deleteUser(@Param('id') id: string) {
+    await this.usersService.deleteUser(id);
+    return {
+      message: 'Usuário removido com sucesso',
+    };
   }
 }
