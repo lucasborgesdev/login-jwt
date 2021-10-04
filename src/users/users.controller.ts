@@ -6,6 +6,8 @@ import {
   UseGuards,
   Get,
   Param,
+  Patch,
+  ForbiddenException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
@@ -14,6 +16,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from '../auth/roles.guard';
 import { Role } from '../auth/role.decorator';
 import { UserRole } from './user-roles.enum';
+import { UpdateUserDto } from './dtos/update-users.dto';
+import { GetUser } from 'src/auth/get-user.decorator';
+import { User } from './user.entity';
 
 @Controller('users')
 @UseGuards(AuthGuard(), RolesGuard)
@@ -41,5 +46,20 @@ export class UsersController {
       user,
       message: 'Usuário encontrado',
     };
+  }
+
+  @Patch(':id')
+  async updateUser(
+    @Body(ValidationPipe) updateUserDto: UpdateUserDto,
+    @GetUser() user: User,
+    @Param('id') id: string,
+  ) {
+    if (user.role != UserRole.ADMIN && user.id.toString() != id) {
+      throw new ForbiddenException(
+        'Você não tem autorização para acessar esse recurso',
+      );
+    } else {
+      return this.usersService.updateUser(updateUserDto, id);
+    }
   }
 }
