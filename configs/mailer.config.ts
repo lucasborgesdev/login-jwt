@@ -1,5 +1,5 @@
 import { MailerOptions } from '@nestjs-modules/mailer';
-import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter'; 
 import * as path from 'path';
 
 export const mailerConfig: MailerOptions = {
@@ -11,5 +11,13 @@ export const mailerConfig: MailerOptions = {
       layoutsDir: path.resolve(__dirname, '..', '..', 'templates'),
     },
   },
-  transport: `smtps://lucas_borges_br@hotmail.com:Luc@s1992`,
+  //transport: `smtps://lucasborgesbr924@gmail.com:Luc@s1992`,
+  transport: {
+    host: 'smtp.gmail.com',
+    service: 'Gmail',      
+    auth: {
+      user: 'lucasborgesbr924@gmail.com',
+      pass: 'Luc@s1992',
+    },
+  },
 };
