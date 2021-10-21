@@ -1,5 +1,7 @@
 import { MailerOptions } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter'; 
+
+
 import * as path from 'path';
 
 export const mailerConfig: MailerOptions = {
@@ -16,7 +18,7 @@ export const mailerConfig: MailerOptions = {
     host: 'smtp.gmail.com',
     service: 'Gmail',      
     auth: {
-      user: '',
+      user: ,
       pass: '',
     },
   },
