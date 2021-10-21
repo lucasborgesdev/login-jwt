@@ -4,5 +4,5 @@ export class FindUsersQueryDto extends BaseQueryParametersDto {
   name: string;
   email: string;
   status: boolean;
-  role: string
+  role: string;
 }
