@@ -4,11 +4,6 @@ import { ConfigService } from '@nestjs/config';
 import * as path from 'path';
 import { configuration } from './ambiente.config';
 
-
-const xx = ConfigService;
-
-
-
 export const mailerConfig: MailerOptions = {
   template: {
     dir: path.resolve(__dirname, '..', '..', 'templates'),
@@ -20,11 +15,11 @@ export const mailerConfig: MailerOptions = {
   },
  
   transport: {
-    host: host,
-    service: service,      
+    host: '',
+    service: '',      
     auth: {
-      user: user,
-      pass:  pass,
+      user: '',
+      pass:  '',
     },
   },
 };

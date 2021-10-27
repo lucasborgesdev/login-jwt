@@ -15,11 +15,6 @@ import { configuration } from 'configs/ambiente.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [configuration]
-
-    }),
     TypeOrmModule.forRoot(typeOrmConfig),
     WinstonModule.forRoot(winstonConfig),
     MailerModule.forRoot(mailerConfig),
