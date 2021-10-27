@@ -10,11 +10,15 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { mailerConfig } from 'configs/mailer.config';
+import { configuration } from 'configs/ambiente.config';
+
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      load: [configuration]
+
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
     WinstonModule.forRoot(winstonConfig),

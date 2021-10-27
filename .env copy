@@ -1,0 +1,4 @@
+MAIL_HOST=smtp.gmail.com
+MAIL_SERVICE=Gmail 
+MAIL_USER=elibrasapi@gmail.com
+MAIL_PASSWORD=ELILuc@s1992
