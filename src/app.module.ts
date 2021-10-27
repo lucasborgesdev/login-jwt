@@ -13,9 +13,6 @@ import { mailerConfig } from 'configs/mailer.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
     TypeOrmModule.forRoot(typeOrmConfig),
     WinstonModule.forRoot(winstonConfig),
     MailerModule.forRoot(mailerConfig),

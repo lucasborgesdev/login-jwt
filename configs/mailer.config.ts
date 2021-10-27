@@ -18,8 +18,8 @@ export const mailerConfig: MailerOptions = {
     host: 'smtp.gmail.com',
     service: 'Gmail',      
     auth: {
-      user: ,
-      pass: '',
+      user: 'lucas',
+      pass: 'pass'
     },
   },
 };
